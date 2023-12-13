@@ -1,14 +1,16 @@
 package com.xxl.job.core.biz.impl;
 
 import com.xxl.job.core.biz.ExecutorBiz;
-import com.xxl.job.core.biz.model.*;
+import com.xxl.job.core.biz.model.IdleBeatParam;
+import com.xxl.job.core.biz.model.KillParam;
+import com.xxl.job.core.biz.model.LogParam;
+import com.xxl.job.core.biz.model.LogResult;
+import com.xxl.job.core.biz.model.ReturnT;
+import com.xxl.job.core.biz.model.TriggerParam;
 import com.xxl.job.core.enums.ExecutorBlockStrategyEnum;
 import com.xxl.job.core.executor.XxlJobExecutor;
-import com.xxl.job.core.glue.GlueFactory;
 import com.xxl.job.core.glue.GlueTypeEnum;
 import com.xxl.job.core.handler.IJobHandler;
-import com.xxl.job.core.handler.impl.GlueJobHandler;
-import com.xxl.job.core.handler.impl.ScriptJobHandler;
 import com.xxl.job.core.log.XxlJobFileAppender;
 import com.xxl.job.core.thread.JobThread;
 import org.slf4j.Logger;
@@ -73,7 +75,7 @@ public class ExecutorBizImpl implements ExecutorBiz {
                     return new ReturnT<String>(ReturnT.FAIL_CODE, "job handler [" + triggerParam.getExecutorHandler() + "] not found.");
                 }
             }
-
+/*
         } else if (GlueTypeEnum.GLUE_GROOVY == glueTypeEnum) {
 
             // valid old jobThread
@@ -114,6 +116,7 @@ public class ExecutorBizImpl implements ExecutorBiz {
             if (jobHandler == null) {
                 jobHandler = new ScriptJobHandler(triggerParam.getJobId(), triggerParam.getGlueUpdatetime(), triggerParam.getGlueSource(), GlueTypeEnum.match(triggerParam.getGlueType()));
             }
+            */
         } else {
             return new ReturnT<String>(ReturnT.FAIL_CODE, "glueType[" + triggerParam.getGlueType() + "] is not valid.");
         }

@@ -13,6 +13,7 @@
 	<modules>
 		<module>xxl-job-core</module>
 		<module>xxl-job-admin</module>
+		<module>xxl-job-manage</module>
 		<module>xxl-job-executor-samples</module>
     </modules>
 
@@ -24,13 +25,13 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.test.skip>true</maven.test.skip>
 
-		<netty.version>4.1.90.Final</netty.version>
+		<netty.version>4.1.101.Final</netty.version>
 		<gson.version>2.10.1</gson.version>
 
-		<spring.version>5.3.26</spring.version>
-		<spring-boot.version>2.7.9</spring-boot.version>
+		<spring.version>5.3.31</spring.version>
+		<spring-boot.version>2.7.18</spring-boot.version>
 
-		<mybatis-spring-boot-starter.version>2.3.0</mybatis-spring-boot-starter.version>
+		<mybatis-spring-boot-starter.version>2.3.2</mybatis-spring-boot-starter.version>
 		<mysql-connector-j.version>8.0.32</mysql-connector-j.version>
 
 		<slf4j-api.version>1.7.36</slf4j-api.version>
@@ -46,6 +47,20 @@
 
 	<build>
 		<plugins>
+			<!-- Source -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
