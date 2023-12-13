@@ -66,11 +66,11 @@ public class JobScheduleHelper {
                     boolean preReadSuc = true;
                     try {
 
-                        conn = XxlJobAdminConfig.getAdminConfig().getDataSource().getConnection();
+                        conn = XxlJobAdminConfig.getAdminConfig().getXxlJobLockDao().getDataSource().getConnection();
                         connAutoCommit = conn.getAutoCommit();
                         conn.setAutoCommit(false);
 
-                        preparedStatement = conn.prepareStatement(  "select * from xxl_job_lock where lock_name = 'schedule_lock' for update" );
+                        preparedStatement = conn.prepareStatement(XxlJobAdminConfig.getAdminConfig().getXxlJobLockDao().getLockSql());
                         preparedStatement.execute();
 
                         // tx start

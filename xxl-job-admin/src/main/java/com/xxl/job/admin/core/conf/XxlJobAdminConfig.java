@@ -4,6 +4,7 @@ import com.xxl.job.admin.core.alarm.JobAlarmer;
 import com.xxl.job.admin.core.scheduler.XxlJobScheduler;
 import com.xxl.job.admin.service.IXxlJobGroupDao;
 import com.xxl.job.admin.service.IXxlJobInfoDao;
+import com.xxl.job.admin.service.IXxlJobLockDao;
 import com.xxl.job.admin.service.IXxlJobLogDao;
 import com.xxl.job.admin.service.IXxlJobLogReportDao;
 import com.xxl.job.admin.service.IXxlJobRegistryDao;
@@ -84,9 +85,9 @@ public class XxlJobAdminConfig implements InitializingBean, DisposableBean {
     @Resource
     private IXxlJobLogReportDao xxlJobLogReportDaoI;
     @Resource
-    private JavaMailSender mailSender;
+    private IXxlJobLockDao xxlJobLockDaoI;
     @Resource
-    private DataSource dataSource;
+    private JavaMailSender mailSender;
     @Resource
     private JobAlarmer jobAlarmer;
 
@@ -146,13 +147,13 @@ public class XxlJobAdminConfig implements InitializingBean, DisposableBean {
     public IXxlJobLogReportDao getXxlJobLogReportDao() {
         return xxlJobLogReportDaoI;
     }
-
+    
+    public IXxlJobLockDao getXxlJobLockDao() {
+        return xxlJobLockDaoI;
+    }
+    
     public JavaMailSender getMailSender() {
         return mailSender;
-    }
-
-    public DataSource getDataSource() {
-        return dataSource;
     }
 
     public JobAlarmer getJobAlarmer() {
